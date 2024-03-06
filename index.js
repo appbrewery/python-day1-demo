@@ -19,12 +19,14 @@ $(document).ready(function () {
 
 //Enter button
 $(document).on("keydown", function (e) {
-  var x = event.which || event.keyCode;
+  var x = e.which || e.keyCode;
   if (x === 13 || x == 13) {
-    var consoleLine = $("#" + CurrentId + " " + "input").val();
+    var consoleLine = $("#" + CurrentId + " input").val();
 
-    console.log(consoleLine);
-    if (bandName != "") bandName += " " + consoleLine;
+    console.log(`consoleLine: ${consoleLine}`);
+    console.log(`bandName: ${bandName}`);
+    bandName += " " + consoleLine;
+    // if (bandName != "") bandName += " " + consoleLine;
     inputValues.push({ id: CurrentId, val: consoleLine });
 
     console.log(inputValues);
@@ -44,7 +46,7 @@ $(document).on("keydown", function (e) {
   }
 });
 $(document).on("keydown", function (e) {
-  var x = event.which || event.keyCode;
+  var x = e.which || e.keyCode;
   var line = $("#" + CurrentId + " input");
   var length = line.val().length;
   if (x != 8) {
