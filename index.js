@@ -21,7 +21,7 @@ $(document).ready(function () {
 $(document).on("keydown", function (e) {
   var x = event.which || event.keyCode;
   if (x === 13 || x == 13) {
-    var consoleLine = $("#" + CurrentId + " input").val();
+    var consoleLine = $("#" + CurrentId + " " + "input").val();
 
     console.log(consoleLine);
     bandName += consoleLine;
