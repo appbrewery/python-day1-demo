@@ -24,7 +24,7 @@ $(document).on("keydown", function (e) {
     var consoleLine = $("#" + CurrentId + " " + "input").val();
 
     console.log(consoleLine);
-    bandName += consoleLine;
+    if (bandName != "") bandName += " " + consoleLine;
     inputValues.push({ id: CurrentId, val: consoleLine });
 
     console.log(inputValues);
