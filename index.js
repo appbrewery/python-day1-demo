@@ -5,10 +5,12 @@ var inputValues = [];
 var bandName = "";
 const inputPrompts = ["What's your pet's name?"];
 let isFirstClick = true;
+let isOn = true;
 
 //Click Run
 $(document).ready(function () {
   $("#run-button").click(function () {
+    isOn = true;
     inputValues = [];
     var bandName = "";
     $("#Content").empty();
@@ -19,14 +21,12 @@ $(document).ready(function () {
 
 //Enter button
 $(document).on("keydown", function (e) {
-  var x = e.which || e.keyCode;
-  if (x === 13 || x == 13) {
+  var x = event.which || event.keyCode;
+  if (x == 13 && isOn) {
     var consoleLine = $("#" + CurrentId + " input").val();
 
-    console.log(`consoleLine: ${consoleLine}`);
-    console.log(`bandName: ${bandName}`);
-    bandName += " " + consoleLine;
-    // if (bandName != "") bandName += " " + consoleLine;
+    console.log(consoleLine);
+    bandName += ` ${consoleLine}`;
     inputValues.push({ id: CurrentId, val: consoleLine });
 
     console.log(inputValues);
@@ -36,6 +36,7 @@ $(document).on("keydown", function (e) {
       NewLine("Your band name could be " + bandName, false);
 
       $(".console-carrot").remove();
+      isOn = false;
       return;
     }
 
@@ -46,7 +47,7 @@ $(document).on("keydown", function (e) {
   }
 });
 $(document).on("keydown", function (e) {
-  var x = e.which || e.keyCode;
+  var x = event.which || event.keyCode;
   var line = $("#" + CurrentId + " input");
   var length = line.val().length;
   if (x != 8) {
